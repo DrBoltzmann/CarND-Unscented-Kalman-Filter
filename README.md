@@ -1,15 +1,20 @@
 # Unscented Kalman Filter Project
 
-The goal of this project is to implement an Unscented Kalman Filter (UKF) in C++ to estimate the state of a moving object using noisy lidar and radar measurement sets, combined with a sensor fusion approach. After running the program in the Udacity simulator the RMSE values need to be lower than the specified tolerance values:
+The goal of this project was to implement an Unscented Kalman Filter (UKF) in C++ to estimate the state of a moving object using noisy lidar and radar measurement sets, combined with a sensor fusion approach. After running the program in the Udacity simulator the RMSE values need to be lower than the specified tolerance values:
 px, py, vx, vy output coordinates must have an RMSE <= [.09, .10, .40, .30] 
 https://review.udacity.com/#!/rubrics/783/view
 
+After implementation, the std_a_ and std_yawdd_ variables (orignally given as 30) needed to be tuned to to bring the results into acceptable levels. The values were manually tuned in a standard approach of modifying the values in large and then smaller steps and looking for sensitivity to agreeable results. A variety of acceptable values were found as shown in the results table below.
 
-
-
-
-
-
+### Results
+| std_a_ | std_yawdd_ | px   |py    |vx    |vy    |
+|--------|------------|------|------|------|------|
+| 30     | 30         |0.0979|0.1208|0.8136|0.9955|
+| 15     | 15         |0.0899|0.1098|0.5830|0.6831|
+| 5      | 5          |0.0793|0.0943|0.4000|0.4056|
+| 5      | 0.9        |0.0774|0.0874|0.3583|0.3205|
+| 2      | 0.3        |0.0754|0.0824|0.3309|0.2846|
+| 1      | 0.9        |0.0654|0.0824|0.3115|0.2644|
 
 # Unscented Kalman Filter Project Starter Code
 Self-Driving Car Engineer Nanodegree Program
